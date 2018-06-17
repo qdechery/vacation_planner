@@ -1,0 +1,17 @@
+<ngui-map class='map' style="height:900px; width:100%"
+  center="[47.608013, -122.335167]"
+  zoom='4'
+  [zoomControlOptions]="{position: 'TOP_CENTER'}"
+  [fullscreenControl]="true"
+  [fullscreenControlOptions]="{position: 'TOP_CENTER'}"
+  [scrollwheel]="false"
+  (click)="onClick($event)">
+  <marker *ngFor='let pos of positions' 
+  	[position]="pos"
+
+    draggable="true"></marker>
+</ngui-map>
+
+<ul id='DestList' *ngFor='let loc of locations'>
+	<li>{{loc.results[1].formatted_address.split(",")[0]}}, {{loc.results[1].formatted_address.split(",")[1]}}</li>
+</ul>

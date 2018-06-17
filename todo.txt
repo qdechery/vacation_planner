@@ -1,0 +1,5 @@
+To Dos:
+-Save data to model
+-Ability to remove locations
+-Ability to vote on location preference (scale of 1-10?)
+-
