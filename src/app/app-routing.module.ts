@@ -6,9 +6,9 @@ import { UserComponent } from './user/user.component';
 import { MapComponent } from './map/map.component';
 
 const routes: Routes = [
-	{ path: 'map', component: MapComponent },
-	{ path: 'user/:id', component: UserComponent },
-	{ path: 'vote', component: VoteComponent }
+	{ path: './map', component: MapComponent },
+	{ path: './user/:id', component: UserComponent },
+	{ path: './vote', component: VoteComponent }
 ]
 
 @NgModule({
