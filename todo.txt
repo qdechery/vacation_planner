@@ -1,5 +1,27 @@
 To Dos:
--Save data to model
--Ability to remove locations
+-Save data to model:
+	-user data:
+		-locations added
+		-votes per location
+		-date joined
+	-location data:
+		-date added
+		-who added
+		-city, state, country, continent
+		-attraction
+		-# votes
+		-priority
+	-vote data:
+		-location
+		-user
+		-when vote cast
+		-last vote updated date
+		-
 -Ability to vote on location preference (scale of 1-10?)
--
+-Ability to have users with specific data
+-Dragged markers update location displayed.
+
+
+
+Completed:
+6/17/18: -Ability to remove locations
