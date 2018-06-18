@@ -46,7 +46,10 @@ export class MapComponent {
   	console.log(x);
 
   	//2. Find the formatted_address
-	// this.service.getAddress(modLatLng).subscribe(data=>{console.log(this.locations.splice(0,1,data.results[0].formatted_address))})
+	this.service.getAddress(modLatLng).subscribe(data=> {
+		// this.locations.splice(0,1,data.results[0].formatted_address)
+		console.log(data);
+	})
 
   	//3. Replace loc of locations with results from 2.
   	
