@@ -9,11 +9,12 @@
   <marker *ngFor='let pos of positions' 
     [position]="pos"
     (rightclick)="onRightClick($event)"
-    (drag)="onDrag($event)"
+    (dragstart)="findLocation($event)"
+    (drag)="findLocation($event)"
     draggable="true"></marker>
 </ngui-map>
 
 <ul id='DestList' *ngFor='let loc of locations'>
-	<li *ngIf="loc.results">{{loc.results[1].formatted_address.split(",")[0]}}, {{loc.results[1].formatted_address.split(",")[1]}}</li>
+	<li *ngIf="loc">{{loc}}</li>
 </ul>
 <!-- <div id='myId'>KAJGAEGNE</div> -->

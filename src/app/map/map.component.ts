@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NguiMapModule } from '@ngui/map'
 import { ConfigServiceService } from './../config-service.service';
+import { LookupService } from './../lookup.service';
 import { HttpClient } from '@angular/common/http';
 
 
@@ -14,7 +15,7 @@ export class MapComponent {
   locations: any[] = [];
   events: any[] = [];
 
-  constructor(private service: ConfigServiceService) { }
+  constructor(private configservice: ConfigServiceService, private lookup:LookupService) { }
 
   onClick(event) {
   	if(event instanceof MouseEvent) return;
@@ -24,12 +25,21 @@ export class MapComponent {
  	var newLng = event.latLng.lng()
   	var modLatLng = newLat+","+newLng
 
-  	this.service.getAddress(modLatLng).subscribe(data => {
+  	this.configservice.getAddress(modLatLng).subscribe(data => {
 
-  		this.locations.push(data)
-  		// console.log(data)
+  		this.locations.push(data['results'][1].formatted_address.split(",")[0])
+  		console.log(this.locations)
   	});
 
+  }
+
+  findLocation(event) {
+  	let lat = event.latLng.lat();
+  	let lng = event.latLng.lng(); 
+  	if(this.events=[]){
+ 		this.events = [lat,lng];
+  	}
+ 	// console.log(this.events);
   }
 
   onDrag(event){
@@ -39,46 +49,31 @@ export class MapComponent {
 
   	if(event instanceof MouseEvent) return;
 
-  	console.log(event);
+  	// console.log(event);
 
   	//1. Get Event lat/lng
   	var x=event.target.position.lat();
-  	console.log(x);
+  	// console.log(this.locations);
 
   	//2. Find the formatted_address
-	this.service.getAddress(modLatLng).subscribe(data=> {
-		// this.locations.splice(0,1,data.results[0].formatted_address)
-		console.log(data);
+
+  	// find the right location to use
+ 	// console.log('Map - whichLoc: ',this.lookup.whichLoc(this.locations,this.events, event));
+ 	
+
+	this.configservice.getAddress(modLatLng).subscribe(data=> {
+		this.locations.splice(0,1,data['results'][0].formatted_address)
+		// console.log(data['results'][0].formatted_address);
 	})
-
-  	//3. Replace loc of locations with results from 2.
-  	
-
-
-  	// if(this.service.getAddress(modLatLng).subscribe(data=>data.results[0].formatted_address) == this.locations[0].results[0].formatted_address){console.log('test')}
-
-
-  	// this.service.getCoord(this.locations[0].results[0].formatted_address).subscribe(data => {
-  		// console.log(data)
-  	// })
-  	// console.log(event.target.position.lat(), event.target.position.lng());
-
-  	// this.locations.splice(this.service.whichLoc(this.locations, event),1,this.service.getAddress(modLatLng).subscribe(data => data));
-
-  	// this.service.getCoord(this.locations[0].results[0].formatted_address).subscribe(data=>{console.log(data)});
-
-  	// for(let i=0; i<this.positions.length; i++) {
-  	// 	if(this.positions[i].lat() == event.latLng.lat() &&
-  	// 		this.positions[i].lng() == event.latLng.lng()){
-  	// 		console.log(i);
-  	// 	}
-  	// }
-
   }
 
   onRightClick(event){
-	console.log('Right Click: ', event.latLng.lat(), event.latLng.lng());
-	this.positions.splice(this.service.whichPos(this.positions, event),1)
+	console.log('Right Click: ', this.lookup.whichPos(this.positions, event));
+	const index=this.lookup.whichPos(this.positions, event)
+	this.positions.splice(index, 1)
+	this.locations.splice(index, 1)
+	console.log('Right Click: ', this.lookup.whichPos(this.positions, event));
+	console.log('Right Click: ',this.locations)
   }
 }
 

@@ -14,6 +14,7 @@ body {
 }
 
 #header {
+  color: #fff;
   position: fixed;
   z-index: 10000;
   left: 0;
@@ -27,29 +28,72 @@ body {
   background: #fff;
 }
 
-h1 {
-	margin: 0px;
-	padding-top: 10px;
+h2 {
+  margin: 25px;
+  padding: 25px 0px 0px 25px;
 }
 
-.icon {
-  padding: 0px;
+form {
+  margin: 25px;
+  padding: 25px;
+  max-width: 50%;
+}
+
+
+/*.icon {
   font-size: 20px;
-  width: 32px;
+  width: 3.85em;
   height: auto;
-  padding: 0.5em;
+  padding: .75em;
   margin-right: 1.5em;
   text-decoration: none;
   list-style-type: none;
   float: right;
   text-transform: uppercase;
-}
+}*/
+
+
 
 .logo {
   position: absolute;
   left: 0.8em;
   top: 0;
-  line-height: 2.2em;
-  font-size: 1.4em;
+  /*line-height: 2.2em;*/
+  font-size: 24px;
+  /*vertical-align: baseline;*/
 }
 
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+nav ul li {
+    display: inline;
+    float: right;
+    color: #000;
+    /*padding: 8px 16px;*/
+    height: 100%;
+}
+
+nav ul li a {
+    display: block;
+    padding: 8px;
+    background-color: #333;
+    color: #fff;
+    font-size:18px;
+    transition: all .2s ease-in-out;
+}
+
+nav ul li a:hover {
+    transform: scale(1.1);
+    text-decoration: none;
+    color:#fff;
+}
+
+.active {
+    background-color: #4CAF50;
+}
