@@ -22,6 +22,11 @@ export class HomeComponent implements OnInit {
             this.loadAllUsers() 
         });
     }
+    getID(user: User){
+        this.userService.getIdByUser(user).pipe(first()).subscribe(users => {
+            console.log(user.id);
+        })
+    }
 
     private loadAllUsers() {
         this.userService.getAll().pipe(first()).subscribe(users => { 

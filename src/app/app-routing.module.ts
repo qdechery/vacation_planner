@@ -8,11 +8,22 @@ import { LoginComponent } from './login';
 import { RegisterComponent } from './register';
 import { AuthGuard } from './_guards';
 import { HomeComponent } from './home';
+import { UserService } from './_services/user.service';
+import { HttpClient } from '@angular/common/http';
+import { User } from './_models'
+
+ // getHero(id: number): Observable<Hero> {
+ //    // TODO: send the message _after_ fetching the hero
+ //    this.messageService.add(`HeroService: fetched hero id=${id}`);
+ //    return of(HEROES.find(hero => hero.id === id));
+ //  }
+    
+
 
 const routes: Routes = [
-    { path: '', component: HomeComponent, canActivate: [AuthGuard] },
+	{ path: '', component: MapComponent },
 	{ path: 'map', component: MapComponent },
-	{ path: 'user/:id', component: UserComponent },
+    { path: 'user/:id', component: HomeComponent, canActivate: [AuthGuard] },
 	{ path: 'vote', component: VoteComponent },
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
@@ -25,4 +36,21 @@ const routes: Routes = [
 	imports: [ RouterModule.forRoot(routes) ],
 	exports: [ RouterModule ]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule { 
+
+    constructor(private http: HttpClient, private user: UserService) { }
+
+ //    ngOnInit() {
+	// 	getIdByUser(user: User) {
+	// 	    return this.http.get('/api/users');
+	//     }
+
+	//     getID(user: User){
+	//         this.userService.getIdByUser(user).pipe(first()).subscribe(users => {
+	//             return user.id;
+	//         })
+	//     }
+
+	// }
+
+}

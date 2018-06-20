@@ -1,17 +1,21 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <header id="header">
-  <h1 class='logo'>
-    {{ title }}
-  </h1>
-<nav>
-<ul>
-  <li><a class='icon' routerLink='/'>Home</a></li>
-  <li><a class='icon' routerLink='/map'>Map</a></li>
-  <li><a class='icon' routerLink='/user/1'>User</a></li>
-  <li><a class='icon' routerLink='/vote'>Vote</a></li>
-  <li><a class='icon' routerLink='/login'>Login</a></li>
-  <li><a class='icon' routerLink='/regiser'>Register</a></li>
-</ul>
-</nav>
+  <nav class='navbar navbar-inverse' id='nav'>
+    <div class="container-fluid">
+      <div class='navbar-header'>
+        <a class='navbar-brand' routeLink='/'>{{ title }}</a>
+      </div>
+      <div class='collapse navbar-collapse'>
+        <ul class='nav navbar-nav'>
+  <!-- <li><a class='icon' routerLink='/'>Home</a></li> -->
+          <li><a class='icon' routerLink='/map'>Map</a></li>
+          <li><a class='icon' routerLink='/user/:id'>User</a></li>
+          <li><a class='icon' routerLink='/vote'>Vote</a></li>
+          <li><a class='icon' routerLink='/login'>Login</a></li>
+          <li><a class='icon' routerLink='/register'>Register</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 </header>
-    <router-outlet></router-outlet>
+<router-outlet></router-outlet>

@@ -15,6 +15,10 @@ export class UserService {
         return this.http.get('/api/users/' + id);
     }
 
+    getIdByUser(user: User) {
+        return this.http.get('/api/users');
+    }
+
     create(user: User) {
         return this.http.post('/api/users', user);
     }
@@ -25,5 +29,6 @@ export class UserService {
 
     delete(id: number) {
         return this.http.delete('/api/users/' + id);
+        // console.log(id);
     }
 }

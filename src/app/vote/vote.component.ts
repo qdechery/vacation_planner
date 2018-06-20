@@ -6,15 +6,15 @@ import { MapComponent } from './../map/map.component';
   templateUrl: './vote.component.html',
   styleUrls: ['./vote.component.css']
 })
-export class VoteComponent implements AfterViewInit {
+export class VoteComponent {
   
-  @ViewChild(MapComponent) child;
+  // @ViewChild(MapComponent) child;
 
-  constructor() { }
+  // constructor() { }
 
-  locations: any[] = [];
+  // locations: any[] = [];
 
-  ngAfterViewInit() {
-  	this.locations = this.child.locations;
-  }
+  // ngAfterViewInit() {
+  // 	this.locations = this.child.locations;
+  // }
 }
